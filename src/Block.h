@@ -4,6 +4,8 @@
 #include <string>
 
 #include <string.h>
+#include <list>
+
 #include <unistd.h>
 #include <sys/stat.h>
 #include <fcntl.h>

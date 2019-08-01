@@ -17,7 +17,7 @@ struct UrlCountCmp {
 
 int main(int argc, char* argv[]) {
     if (argc != 5) {
-        std::cout << "Usage: ./TopKURL inputFilePath outputFilePath K slots";
+        std::cout << "Usage: ./TopKURL inputFilePath outputFilePath K slots" << std::endl;
         return 0;
     }
     std::string inputFilePath(argv[1]);

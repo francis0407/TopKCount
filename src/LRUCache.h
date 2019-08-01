@@ -25,7 +25,7 @@ public:
         blocks = _blocks;
         fileNamePrefix = _fileName;
         // initialize blocks
-        char *data = new char[BLOCKSIZE * blocks];
+        data = new char[BLOCKSIZE * blocks];
         for (int i = 0; i < blocks; i++)
             freeBlocks.push_back(new Block(data + BLOCKSIZE * i));
         cacheIndex.resize(groups);
@@ -43,6 +43,7 @@ public:
             entry->value->writeBack(fds[entry->group], entry->blockNum);
         for (auto fd : fds)
             close(fd);
+        delete data;
     }
 
     Block* getBlock(int group, int blockNum) {
@@ -77,6 +78,7 @@ public:
 private:
     int groups;
     int blocks;
+    char* data;
     std::string fileNamePrefix;
     std::vector<int> fds; // file descriptors
     std::list<Block*> freeBlocks;
@@ -86,7 +88,7 @@ private:
 private:
     LRUEntry* getNewLRUEntry() {
         if (cacheList.size() != blocks) {
-            // cache is not full, allocate new Block 
+            // cacheList is not full, allocate new Block 
             auto entry = new LRUEntry();
             entry->value = freeBlocks.front();
             freeBlocks.pop_front();

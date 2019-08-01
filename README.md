@@ -3,7 +3,15 @@ PingCAP homework
 
 ### Build
 ```
-./build.sh
+# mkdir build
+# cd build
+# cmake ..
+# make
+```
+
+### Unit Test
+```
+./unit_tests
 ```
 
 ### Usage

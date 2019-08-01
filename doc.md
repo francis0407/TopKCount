@@ -30,15 +30,3 @@
 * 没有做并发的处理，IO没有利用满，这样写起来大概会比较复杂。。
 
 * 其实可以考虑在每个Hash Slot内部做一个数据结构的，例如二次Hash或者上一个BTree之类的，便于搜索Key，或者简单用一个BloomFilter也可以加速的。目前这种线性搜索的速度太慢了，随着BLock数量变多，后面的URL搜不动。
-
-## 使用方法
-### Build/Compile
-```
-./build.sh
-```
-
-### Usage
-```
-./TopKURL inputFile outputFile K slots
-```
-参数分别是：输入文件，结果输出文件，TopK的K值，Hash Map的Slot数量。
